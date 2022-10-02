@@ -7,17 +7,17 @@ function getComputerChoice() {
     } else if (choice >= 34 && choice <= 66) {
         result = "scissors"
     } else result = "paper"
-    return choice = choice.toLowerCase();
+    return result = result.toLowerCase();
 }
 
 function getPlayerChoice() {
-    let choice = prompt("Rock, Paper or Sciccors?", "");
+    let result = prompt("Rock, Paper or Sciccors?", "");
 
-    if (typeof choice === "number") {
+    if (typeof result === "number") {
         alert("Error: Try again")
         getPlayerChoice();
     } else
-    return choice = choice.toLowerCase();
+    return result = result.toLowerCase();
 }
 
 getComputerChoice();
@@ -29,4 +29,17 @@ let rules = {
 }
 
 function winLose (playerSelection, computerSelection) {
+    let rules = {
+        rock: "paper",
+        scissors: "rock",
+        paper: "scissors"
+    }
+    let result;
+
+    if (playerSelection === computerSelection) {
+        result = "Draw!"
+    } else if (computerSelection === rules[playerSelection]) {
+        result = "You Win!"
+    } else result = "You Lose!"
+    return result;
 }
