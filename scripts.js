@@ -1,3 +1,7 @@
+var playerWins = 0;
+var computerWins = 0;
+var draw = 0;
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 100) + 1;
     let result;
@@ -11,21 +15,14 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    let result = prompt("Rock, Paper or Sciccors?", "");
+    let result = prompt("Rock, Paper or Scissors?", "");
+    result = result.toLowerCase();
 
-    if (typeof result === "number") {
-        alert("Error: Try again")
-        getPlayerChoice();
+    if (result === "paper" || result === "rock" || result === "scissors") {
+        return result;
     } else
-    return result = result.toLowerCase();
-}
-
-getComputerChoice();
-
-let rules = {
-    rock: "paper",
-    scissors: "rock",
-    paper: "scissors"
+        alert("Error: Try again")
+        return getPlayerChoice();
 }
 
 function winLose (playerSelection, computerSelection) {
@@ -34,12 +31,24 @@ function winLose (playerSelection, computerSelection) {
         scissors: "rock",
         paper: "scissors"
     }
+
     let result;
 
     if (playerSelection === computerSelection) {
-        result = "Draw!"
+        result = `Draw! YOU:${playerSelection.toUpperCase()} CPU:${computerSelection.toUpperCase()}`
+        draw += 1;
     } else if (computerSelection === rules[playerSelection]) {
-        result = "You Win!"
-    } else result = "You Lose!"
-    return result;
+        result = `You Lose! YOU:${playerSelection.toUpperCase()} CPU:${computerSelection.toUpperCase()}`
+        computerWins += 1;
+    } else { result = `You Win! YOU:${playerSelection.toUpperCase()} CPU:${computerSelection.toUpperCase()}` 
+        playerWins += 1;
+    } return console.log(result);
+}
+
+function game() {
+    for(let i = 0; i < 5; i++) {
+        winLose(getPlayerChoice(),getComputerChoice());
+        console.log(`YOU: ${playerWins} CPU: ${computerWins} DRAWS:${draw}`)
+    }
+    return console.log(`FINAL SCORES: YOU:${playerWins} CPU:${computerWins} DRAWS:${draw}`)
 }
