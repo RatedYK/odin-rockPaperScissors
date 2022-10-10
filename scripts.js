@@ -14,41 +14,43 @@ function getComputerChoice() {
     return result = result.toLowerCase();
 }
 
-function getPlayerChoice() {
-    let result = prompt("Rock, Paper or Scissors?", "");
-    result = result.toLowerCase();
-
-    if (result === "paper" || result === "rock" || result === "scissors") {
-        return result;
-    } else
-        alert("Error: Try again")
-        return getPlayerChoice();
-}
-
-function winLose (playerSelection, computerSelection) {
+//plays one round of RoShamBo and updates the scores
+function playRound (playerSelection) {
     let rules = {
         rock: "paper",
         scissors: "rock",
         paper: "scissors"
-    }
+    } //defines rules of the game
 
-    let result;
+    let computerSelection = getComputerChoice(); //get the computers choice
 
     if (playerSelection === computerSelection) {
-        result = `Draw! YOU:${playerSelection.toUpperCase()} CPU:${computerSelection.toUpperCase()}`
+        condition.textContent = 'Draw!';
+        condition.style.cssText = "color: lightgrey";
+        result.textContent = `YOU:  ${playerSelection.toUpperCase()}         CPU:  ${computerSelection.toUpperCase()}`
         draw += 1;
     } else if (computerSelection === rules[playerSelection]) {
-        result = `You Lose! YOU:${playerSelection.toUpperCase()} CPU:${computerSelection.toUpperCase()}`
+        condition.textContent = 'You Lose!'
+        condition.style.cssText = "color: rgb(212, 7, 0)";
+        result.textContent = `YOU:  ${playerSelection.toUpperCase()}         CPU:  ${computerSelection.toUpperCase()}`
         computerWins += 1;
-    } else { result = `You Win! YOU:${playerSelection.toUpperCase()} CPU:${computerSelection.toUpperCase()}` 
+        computerScore.textContent = `CPU: ${computerWins}`
+    } else { 
+        condition.textContent = 'You Win!';
+        condition.style.cssText = "color: rgb(124, 200, 218)";
+        result.textContent = `YOU:  ${playerSelection.toUpperCase()}          CPU:  ${computerSelection.toUpperCase()}` 
         playerWins += 1;
+        playerScore.textContent = `Player: ${playerWins}`
     } return console.log(result);
 }
 
-function game() {
-    for(let i = 0; i < 5; i++) {
-        winLose(getPlayerChoice(),getComputerChoice());
-        console.log(`YOU: ${playerWins} CPU: ${computerWins} DRAWS:${draw}`)
-    }
-    return console.log(`FINAL SCORES: YOU:${playerWins} CPU:${computerWins} DRAWS:${draw}`)
-}
+const buttons = document.querySelectorAll('input');
+
+buttons.forEach(button => button.addEventListener('click', (choice) => {
+    playRound(choice.target.value)})
+) //adds button event for rock, paper and scissors.
+
+const playerScore = document.querySelector('#playerScore');
+const computerScore = document.querySelector('#computerScore');
+const result = document.querySelector('#result');
+const condition = document.querySelector('#condition');

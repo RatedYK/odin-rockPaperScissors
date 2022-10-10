@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
-    <script type="text/javascript" src="./scripts.js"></script>
+    <script src="./scripts.js" defer></script>
     <title>RoShamBo</title>
 </head>
 <body>
+    <div class="container">
+
+        <div class="currentScoreBox">
+            <div class="playerBox">
+                <span id="playerScore">Player: 0</span>
+            </div>
+            <div class="computerBox">
+                <span id="computerScore">CPU: 0</span>
+            </div>
+        </div>
+
+        <div class="resultBox">
+            <span id="condition"></span>
+            <span id="result">Make a choice!</span>
+        </div>
+
+        <div class="imageBox">
+            <input type="image" src="./images/pexels-peter-döpper-2363901.jpg" class="rock" value="rock"/> 
+            <input type="image" src="./images/pexels-karolina-grabowska-4226896.jpg" class="scissors" value="scissors"/> 
+            <input type="image" src="./images/pexels-pixabay-268349.jpg" class="paper" value="paper"/> 
+        </div>
+
+
+    </div>
 
 </body>
 </html>

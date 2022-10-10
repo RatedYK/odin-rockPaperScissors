@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.currentScoreBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 50px;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    margin-top: 35px;
+
+}
+
+.resultBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    white-space: pre;
+    padding: 30px;
+    color: lightgray;
+    font-size: large;
+    margin-top: 50px;
+}
+
+#condition {
+    font-size: 50px;
+}
+
+
+.imageBox {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 60px;
+    margin-top: 75px;
+}
+
+
+input {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+input:hover {
+    border: 2px solid orange;
+    box-shadow: 0 0 1rem orange;
+}
+
+input:active {
+    transform: scale(0.9);
+}
